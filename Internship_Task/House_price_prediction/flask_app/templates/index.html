@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>House Price Prediction</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f0f2f5;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: 500px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 15px;
+            display: block;
+            color: #444;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        .result {
+            margin-top: 25px;
+            font-size: 18px;
+            color: #0056b3;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>House Price Prediction</h2>
+        <form action="/predict" method="POST">
+            <label>Area (sq ft):</label>
+            <input type="text" name="area" required>
+
+            <label>Bedrooms:</label>
+            <input type="text" name="bedrooms" required>
+
+            <label>Bathrooms:</label>
+            <input type="text" name="bathrooms" required>
+
+            <label>Stories:</label>
+            <input type="text" name="stories" required>
+
+            <label>Main Road (1 = Yes, 0 = No):</label>
+            <input type="text" name="mainroad_yes" required>
+
+            <label>Guest Room (1 = Yes, 0 = No):</label>
+            <input type="text" name="guestroom_yes" required>
+
+            <label>Basement (1 = Yes, 0 = No):</label>
+            <input type="text" name="basement_yes" required>
+
+            <label>Hot Water Heating (1 = Yes, 0 = No):</label>
+            <input type="text" name="hotwaterheating_yes" required>
+
+            <label>Air Conditioning (1 = Yes, 0 = No):</label>
+            <input type="text" name="airconditioning_yes" required>
+
+            <label>Parking Spaces:</label>
+            <input type="text" name="parking" required>
+
+            <label>Preferred Area (1 = Yes, 0 = No):</label>
+            <input type="text" name="prefarea_yes" required>
+
+            <input type="submit" value="Predict Price">
+        </form>
+
+        {% if prediction_text %}
+        <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
